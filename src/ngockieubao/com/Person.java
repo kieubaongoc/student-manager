@@ -65,7 +65,7 @@ public class Person {
 	// show info
 	public void showInfo() {
 		System.out.println("---------------------------");
-		System.out.println("Person info:");
+		System.out.println("Info:");
 		System.out.println("- Name \t\t: " + this.getName());
 		System.out.println("- Birthday \t: " + this.getBirthday());
 		System.out.println("- Address \t: " + this.getAddress());
