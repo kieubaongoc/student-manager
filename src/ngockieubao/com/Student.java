@@ -2,14 +2,14 @@ package ngockieubao.com;
 
 public class Student extends Person{
 	
-	public String id;
+	public int id;
 	public int score;
 	
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	// GETTER
@@ -28,7 +28,7 @@ public class Student extends Person{
 		super();
 	}
 	// Constructor full
-	public Student(String sID, String sName, int sBirthday, String sAddress, String sGender, int sScore) {
+	public Student(int sID, String sName, int sBirthday, String sAddress, String sGender, int sScore) {
 		super(sName, sBirthday, sAddress, sGender);
 		this.id = sID;
 		this.score = sScore;

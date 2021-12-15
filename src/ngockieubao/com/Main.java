@@ -1,12 +1,15 @@
 package ngockieubao.com;
 
+import java.awt.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 	
 	private static Student studentObj = null;
-	static ArrayList<Student> listStudent = new ArrayList<Student>();
+	private static ArrayList<Student> listStudent = new ArrayList<>();
+//	private List<Student> studentList;
+//	static	List listStudent = new List();
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -24,7 +27,7 @@ public class Main {
 				case 1:
 					addStudent();
 					break;
-				case 2:
+				 case 2:
 					editStudent();
 					break;
 				case 3:
@@ -47,6 +50,7 @@ public class Main {
 		scanner.close();
 	
 	}
+	
 	public static void showMenu() {
 		System.out.println("---------------- STUDENT MANAGER ----------------");
 		System.out.println("1. Add ");
@@ -57,17 +61,19 @@ public class Main {
 		System.out.println("6. Exit ");
 		System.out.print("Your choice[1-6]: ");
 	}
+	
 	public static void addStudent() {
 		Scanner scanner = new Scanner(System.in);
-		String id 		= "";
+		int id 			= 0;
 		String name 	= "";
 		int birthday 	= 0;
 		String address 	= "";
 		String gender 	= "";
-		int score = 0;
+		int score 		= 0;
 		
 		System.out.print("ID: ");
-		id = scanner.next();
+		id = scanner.nextInt();
+		scanner.nextLine();
 		
 		System.out.print("Name: ");
 		name = scanner.next();
@@ -83,43 +89,69 @@ public class Main {
 		
 		System.out.print("Score: ");
 		score = scanner.nextInt();
+		scanner.nextLine();
 		
 		studentObj = new Student(id, name, birthday, address, gender, score);
 		listStudent.add(studentObj);
 //		scanner.close();
 		
 	}
+	
 	public static void editStudent() {
-		if(studentObj != null) {
-			String idStudent;
-			Scanner scanner = new Scanner(System.in);
-			do {
-				System.out.println("Enter ID student: ");
-				idStudent = scanner.next();
-			} while (idStudent.equals(studentObj.id) == false);
-				
-			if(idStudent.equals(studentObj.id) == true)
-			{
-				String address 	= "";
-				int score = 0;
-				
-				System.out.println("Address: ");
-				address = scanner.next();
-				
-				System.out.println("Score: ");
-				score = scanner.nextInt();
-				
-				studentObj.setAddress(address);
-				studentObj.setScore(score);
-			}
+//		if(studentObj != null) {
+//			int idStudent;
+//			Scanner scanner = new Scanner(System.in);
+//			idStudent = scanner.nextInt();
+//			
+//			for(Student student : listStudent) {
+//				if(student.id == idStudent) {
+//					System.out.println("Address: ");
+//					student.address = scanner.next();
+//					
+//					System.out.println("Score: ");
+//					student.score = scanner.nextInt();
+//					
+//					studentObj.setAddress(student.address);
+//					studentObj.setScore(student.score);
+//				}
+//			}
 			
-		} else {
-				System.out.println("Student is not exist.");
-			}
+
+			int id;
+			Scanner scanner = new Scanner(System.in);
+			System.out.print("Enter student's ID: ");
+			id = scanner.nextInt();
+	        boolean isExisted = false;
+	        int size = listStudent.size();
+	        
+	        for (int i = 0; i < size; i++) {
+	            if (listStudent.get(i).getId() == id) {
+	                isExisted = true;
+	                String address;
+	                int score;
+	                
+	                System.out.println("New address: ");
+					address = scanner.next();
+					
+					System.out.println("New score: ");
+					score = scanner.nextInt();
+					
+	                listStudent.get(i).setAddress(address);
+	                listStudent.get(i).setScore(score);
+	                break;
+	            }
+	        }
+	        if (!isExisted) {
+	            System.out.printf("id = %d not existed.\n", id);
+	        }	
+//		} else {
+//				System.out.println("Student is not exist.");
+//			}
 	}
+	
 	public static void delStudent() {
 //		if(studentObj != null) {
-			System.out.println("\nIn progressing . . .\n");
+//			System.out.println("\nIn progressing . . .\n");
 //			String idStudent;
 //			Scanner scanner = new Scanner(System.in);
 //			do {
@@ -150,26 +182,66 @@ public class Main {
 //		}else{
 //				System.out.println("Student is not exist.");
 //			}
+		
+
+			int id;
+			Scanner scanner = new Scanner(System.in);
+			System.out.print("Enter student's ID: ");
+			id = scanner.nextInt();
+	        Student student = null;
+	        int size = listStudent.size();
+	        
+	        for (int i = 0; i < size; i++) {
+	            if (listStudent.get(i).getId() == id) {
+	                student = listStudent.get(i);
+	                break;
+	            }
+	        }
+	        if (student != null) {
+	        	listStudent.remove(student);
+	        }
+	        else {
+	            System.out.printf("id = %d not existed.\n", id);
+	        }
 	}
+	
 	public static void findStudent() {
 		if(studentObj != null) {
-			String idStudent;
-			Scanner scanner = new Scanner(System.in);
-			do {
-				System.out.println("Enter ID student: ");
-				idStudent = scanner.next();
-			} while (idStudent.equals(studentObj.id) == false);
-				
-			if(idStudent.contains(studentObj.id))
-			{
-				System.out.println("You just found: ");
-				studentObj.showInfo();
-				
-			}else{
-				System.out.println("Not found.");
-			}
+			// Search by student's name
 			
-		}else{
+//			String sName;
+//			Scanner scanner = new Scanner(System.in);
+//			do {
+//				System.out.println("Enter student's name: ");
+//				sName = scanner.next();
+//			} while (sName.equals(studentObj.name) == false);
+//				
+//			if(sName.contains(studentObj.name))
+//			{
+//				System.out.println("You just found: ");
+//				studentObj.showInfo();
+//				
+//			}else{
+//				System.out.println("Not found.");
+//			}
+			
+			// Search by student's score
+			
+			int score;
+			Scanner sc = new Scanner(System.in);
+			System.out.print("Enter score(0-100): ");
+			score = sc.nextInt();
+			
+			for(Student student : listStudent) {
+				if(student.getScore() == score) {
+					student.showInfo();
+				} 
+//				else {
+//					System.out.println("Not found.");
+//				}
+			}			
+		}
+		else {
 				System.out.println("Student is not exist.");
 			}
 	}
@@ -180,7 +252,8 @@ public class Main {
 				System.out.println();
 	            student.showInfo();
 	        }
-		}else{
+		}
+		else {
 				System.out.println("Student is not exist.");
 			}
 	}
