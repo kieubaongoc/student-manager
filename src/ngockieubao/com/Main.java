@@ -117,10 +117,10 @@ public class Main {
 //			}
 			
 
-			int id;
-			Scanner scanner = new Scanner(System.in);
-			System.out.print("Enter student's ID: ");
-			id = scanner.nextInt();
+		int id;
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Enter student's ID: ");
+		id = scanner.nextInt();
 	        boolean isExisted = false;
 	        int size = listStudent.size();
 	        
@@ -131,10 +131,10 @@ public class Main {
 	                int score;
 	                
 	                System.out.println("New address: ");
-					address = scanner.next();
-					
-					System.out.println("New score: ");
-					score = scanner.nextInt();
+			address = scanner.next();
+
+			System.out.println("New score: ");
+			score = scanner.nextInt();
 					
 	                listStudent.get(i).setAddress(address);
 	                listStudent.get(i).setScore(score);
@@ -143,8 +143,8 @@ public class Main {
 	        }
 	        if (!isExisted) {
 	            System.out.printf("id = %d not existed.\n", id);
-	        }	
-//		} else {
+	        }	 
+// 		else {
 //				System.out.println("Student is not exist.");
 //			}
 	}
@@ -184,10 +184,10 @@ public class Main {
 //			}
 		
 
-			int id;
-			Scanner scanner = new Scanner(System.in);
-			System.out.print("Enter student's ID: ");
-			id = scanner.nextInt();
+		int id;
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Enter student's ID: ");
+		id = scanner.nextInt();
 	        Student student = null;
 	        int size = listStudent.size();
 	        
@@ -242,19 +242,19 @@ public class Main {
 			}			
 		}
 		else {
-				System.out.println("Student is not exist.");
-			}
+			System.out.println("Student is not exist.");
+		}
 	}
 
 	public static void infoStudent() {
 		if(studentObj != null) {
 			for (Student student : listStudent) {
 				System.out.println();
-	            student.showInfo();
-	        }
+	            		student.showInfo();
+	        	}
 		}
 		else {
-				System.out.println("Student is not exist.");
-			}
+			System.out.println("Student is not exist.");
+		}
 	}
 }
